@@ -1,0 +1,65 @@
+body
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .08fr .08fr .08fr .5fr .1fr;
+    grid-template-areas: 
+    "header header header"
+    "leftMargin displayTurn rightMargin"
+    "leftMargin buttonArea rightMargin"
+    "leftMargin gameboard rightMargin"
+    "footer footer footer"
+    ;
+}
+
+header
+{grid-area: header;}
+
+footer
+{grid-area: footer;}
+
+#leftMargin
+{grid-area: leftMargin;
+margin-left: auto;
+margin-right: auto;}
+
+#rightMargin
+{grid-area: rightMargin;
+    margin-left: auto;
+    margin-right: auto;}
+
+.buttonArea
+{grid-area: buttonArea;}
+
+.displayTurn
+{grid-area: displayTurn;}
+
+#gb
+{grid-area: gameboard;}
+
+.gameboard
+{
+display: grid;
+height:100vh;
+grid-template-columns: 200px 200px 200px;
+grid-template-rows: 200px 200px 200px;
+}
+
+.box
+{margin: 10px;
+border-radius: 5px;
+background-color: #dfecec;
+font-size: 100px;
+transition: all .3s ease-in-out; 
+}
+
+
+
+.box:hover { 
+  transform: scale(1.1); 
+  
+  cursor: pointer;
+  background-color: #9cedee;
+  outline:lightcoral;
+}
+
