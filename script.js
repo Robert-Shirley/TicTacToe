@@ -48,10 +48,9 @@
         this.squares[numb] = "O";
         this.turns.push(null); }
        
-        
-        
         this.checkConditionsX();
-        this.checkConditionsY();
+        this.checkConditionsO();
+        this.checkTie();
         this.render();
         }
     },
@@ -65,42 +64,19 @@
 
     checkConditionsX: function()
     {   let X = "X"
-        if(this.squares[1]== X && this.squares[2]== X && this.squares[3]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[1]== X && this.squares[5]== X && this.squares[9]== X )
+        if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
         { modal.style.display = "block"; this.turns.push(null,null,null,null)}
     },
-    checkConditionsY: function()
+    checkConditionsO: function()
     {
         let X = "O"
-        if(this.squares[1]== X && this.squares[2]== X && this.squares[3]== X )
+        if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
         { modal2.style.display = "block";this.turns.push(null,null,null,null)}
-        else if (this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
-        else if (this.squares[1]== X && this.squares[5]== X && this.squares[9]== X )
-        { modal2.style.display = "block"; this.turns.push(null,null,null,null)}
+    },
+
+    checkTie: function(){
+    if(this.turns.length == 9)
+    { modal3.style.display = "block";}
     },
     
     resetGame: function()
@@ -124,18 +100,24 @@
 
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[1];
+var span3 = document.getElementsByClassName("close")[2];
 span.onclick = function() {
     modal.style.display = "none";
   }
 span2.onclick = function() {
     modal2.style.display = "none";
   }
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
   window.onclick = function(event) {
-    if (event.target == modal|| event.target == modal2) {
+    if (event.target == modal|| event.target == modal2 || event.target == modal3) {
       modal.style.display = "none";
       modal2.style.display = "none";
+      modal3.style.display = "none";
     }
   }

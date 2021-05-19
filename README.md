@@ -8,6 +8,7 @@ Today I started the project and added some design layout and UI
 Pretty productive session actually. Surprisingly, I'm almost done with the game. I finished the design, added a popup that shows which player won, set up victory conditions, only allows valid moves, it updates live with the current player's move, added a reset button, added a few transition elements. I formatted all of my code into a module, this allowed me to keep everything pretty clean. I also used some Jquery for the first time. 
 Tomorrow, I want to add the AI's to play against. I also need to add a draw condition
 
+5/18 another quick update, I added check tie conditions, added a popup for a tie, and cleaned up the code for checkwin conditions a little bit
 
 Attack plan:
 
@@ -25,7 +26,7 @@ Attack plan:
 
 7 - only valid moves allowed (method)  (done)
  
-8 - victory or draw conditions (method)  (
+8 - victory or draw conditions (method)  (done)
 
 9 - Display curr player (method) (done)
 
