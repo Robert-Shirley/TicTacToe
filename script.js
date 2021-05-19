@@ -7,9 +7,29 @@
     squares: {
         1:"",2:"",3:"",4:"",5:"",6:"",7:"",8:"",9:""
     },
-    currentPlayer: "X",
 
+    //1 = yes, 0 = no. hvh =human vs human, hveAI = human vs easy AI, hvIAI = human vs Impossible AI. Default is hvh. Player 1 is always human
+    Player1: {
+        name: "",
+        human: 1,
+        symbol: "X",  
+    },
+    Player2: {
+        name: "",
+        human:1,
+        symbol: "Y",
+    },
+    gameState:{
+        hvh: 1,
+        hveAI: 0,
+        hvIAI: 0,
+    },
+
+    //turn counter
     turns:[],
+
+    //available spaces, after choosing a space, this array gets sliced 
+    availableSpaces:[1,2,3,4,5,6,7,8,9],
 
     init: function () {
         this.cacheDom();
@@ -28,25 +48,29 @@
         this.$reset.on('click',this.resetGame.bind(this));
     },
     render: function(){
-        var curData = { 
-            game:this.squares,
-        };
-        //do a for loop to fill up all button's with curData
         this.displayPlayer();
     },
     addSquare: function(event){
         let $add = $(event.target).closest('button');
         let numb = $add.attr('id');
+        let inte = parseInt(numb)-1;
         if( this.squares[numb]=="" ){
         if (this.turns.length == 0 || this.turns.length ==2 || this.turns.length ==4 || this.turns.length ==6|| this.turns.length == 8)
         {   document.getElementById(numb).innerHTML = "X";
             this.squares[numb] = "X";
             this.turns.push(null);
+           this.availableSpaces = this.availableSpaces.filter(inte => inte != numb)
+           console.log(this.availableSpaces)
          }
-        else if (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7)
+        else if (this.gameState.hvh == 1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
         { document.getElementById(numb).innerHTML = "O";
         this.squares[numb] = "O";
-        this.turns.push(null); }
+        this.turns.push(null);
+        this.availableSpaces = this.availableSpaces.filter(inte => inte != numb) }
+        else if (this.gameState.hveAI == 1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
+        {
+            easyAI(numb,inte);
+        }
        
         this.checkConditionsX();
         this.checkConditionsO();
@@ -54,6 +78,17 @@
         this.render();
         }
     },
+
+   
+      //almost done with this
+        easyAI: function(number, integer)
+        { availableSpaces.prototype.sample = function(){
+            return this[Math.floor(Math.random()*availableSpaces.length)];
+          }
+
+
+        },
+
 
     displayPlayer: function(){
         if (this.turns.length == 0 || this.turns.length ==2 || this.turns.length ==4 || this.turns.length ==6|| this.turns.length == 8)
@@ -129,7 +164,7 @@ span3.onclick = function() {
 
 //initial form selector
 var InitialForm = document.getElementById("InitialForm");
-var span4 = document.getElementsByClassName("close")[3];
+var span4 = document.getElementsByClassName("front")[0];
 
 span4.onclick = function() {
     InitialForm.style.display = "none";
