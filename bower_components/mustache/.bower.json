@@ -1,0 +1,15 @@
+{
+  "name": "mustache",
+  "homepage": "https://github.com/janl/mustache.js",
+  "version": "4.2.0",
+  "_release": "4.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.2.0",
+    "commit": "bd29972ab8a0f4c592f35483615ab9a274396300"
+  },
+  "_source": "https://github.com/janl/mustache.js.git",
+  "_target": "^4.2.0",
+  "_originalSource": "mustache",
+  "_direct": true
+}
