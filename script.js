@@ -127,3 +127,15 @@ span3.onclick = function() {
     }
   }
 
+//initial form selector
+var InitialForm = document.getElementById("InitialForm");
+var span4 = document.getElementsByClassName("close")[3];
+
+span4.onclick = function() {
+    InitialForm.style.display = "none";
+  }
+window.onload = function()
+{
+    InitialForm.style.display = "block";
+}
+
