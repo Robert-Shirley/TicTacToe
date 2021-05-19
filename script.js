@@ -65,7 +65,7 @@
     checkConditionsX: function()
     {   let X = "X"
         if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null)}
+        { modal.style.display = "block"; this.turns.push(null,null,null,null,null);}
     },
     checkConditionsO: function()
     {
@@ -77,7 +77,8 @@
     checkTie: function(){
     if(this.turns.length == 9)
     { modal3.style.display = "block";}
-    },
+    else return;
+},
     
     resetGame: function()
     {
@@ -96,6 +97,10 @@
     game.init();
 
 })();
+
+//Popup functions
+
+
 
 
 var modal = document.getElementById("myModal");
@@ -121,3 +126,4 @@ span3.onclick = function() {
       modal3.style.display = "none";
     }
   }
+
