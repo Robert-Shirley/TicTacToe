@@ -4,32 +4,38 @@ This will be great practice for objects and factory functions. After the calcula
 
 Today I started the project and added some design layout and UI
 
+5/18
+Pretty productive session actually. Surprisingly, I'm almost done with the game. I finished the design, added a popup that shows which player won, set up victory conditions, only allows valid moves, it updates live with the current player's move, added a reset button, added a few transition elements. I formatted all of my code into a module, this allowed me to keep everything pretty clean. I also used some Jquery for the first time. 
+Tomorrow, I want to add the AI's to play against. I also need to add a draw condition
+
 
 Attack plan:
 
-1 - Design 
+1 - Design (done)
 
-2 - class for the gameboard
+2 - class for the gameboard (done)
 
-3 - add functionality with clicking
+3 - add functionality with clicking (done)
 
-4 - first, make it 2 human players
+4 - first, make it 2 human players (done)
 
-5 - add 1st player (X's) (factory) + (method)
+5 - add 1st player (X's) (factory) + (method)  (done)
 
-6 - add 2nd player (O's) and alternate players (factory) + (method)
+6 - add 2nd player (O's) and alternate players (factory) + (method)  (done)
 
-7 - only valid moves allowed (method)
+7 - only valid moves allowed (method)  (done)
+ 
+8 - victory or draw conditions (method)  (
 
-8 - victory or draw conditions (method)
+9 - Display curr player (method) (done)
 
-9 - Display curr player (method)
-
-10 - reset button (method)
-
+10 - reset button (method)  (done)
+ 
 11 - AI button, w/ 2 difficulties easy and hard (impossible to beat)
 
 12 - AI #1 - Random moves, valid selections only
 
 13 - AI #2 - impossible - ref Odin
+
+
 
