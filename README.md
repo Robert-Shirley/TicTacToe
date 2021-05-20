@@ -10,6 +10,9 @@ Tomorrow, I want to add the AI's to play against. I also need to add a draw cond
 
 5/18 another quick update, I added check tie conditions, added a popup for a tie, and cleaned up the code for checkwin conditions a little bit
 
+5/19 added an AI that randomly chooses. I also added a bit to the initial form. I want to be able to select 1 player (vs ai) or 2 player (human vs human) I also want to be able to add names to the players, will be working on that next. 
+I spent some time trying to learn minimax, to make an AI that is impossible to beat. I can't figure out how to add it to how I designed my game. Maybe I'll dive deeper or maybe i'll save that idea for another day. 
+
 Attack plan:
 
 1 - Design (done)
@@ -34,9 +37,11 @@ Attack plan:
  
 11 - AI button, w/ 2 difficulties easy and hard (impossible to beat)
 
-12 - AI #1 - Random moves, valid selections only
+12 - AI #1 - Random moves, valid selections only (done)
 
 13 - AI #2 - impossible - ref Odin
 
 
+
+14 - add cool styling, I like the neon effect
 

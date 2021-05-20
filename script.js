@@ -10,25 +10,25 @@
 
     //1 = yes, 0 = no. hvh =human vs human, hveAI = human vs easy AI, hvIAI = human vs Impossible AI. Default is hvh. Player 1 is always human
     Player1: {
-        name: "",
+        name: "Bob",
         human: 1,
         symbol: "X",  
     },
     Player2: {
         name: "",
         human:1,
-        symbol: "Y",
+        symbol: "O",
     },
     gameState:{
-        hvh: 1,
+        hvh: 0,
         hveAI: 0,
-        hvIAI: 0,
+        hvIAI: 1,
     },
 
     //turn counter
     turns:[],
 
-    //available spaces, after choosing a space, this array gets sliced 
+    //available spaces, after choosing a space, this array gets smaller 
     availableSpaces:[1,2,3,4,5,6,7,8,9],
 
     init: function () {
@@ -49,6 +49,12 @@
     },
     render: function(){
         this.displayPlayer();
+        if(this.turns.length >=1){
+        for (let i = 1; i <=9; i++)
+        {
+            document.getElementById(i).innerHTML = this.squares[i];
+        }
+    }
     },
     addSquare: function(event){
         let $add = $(event.target).closest('button');
@@ -59,49 +65,60 @@
         {   document.getElementById(numb).innerHTML = "X";
             this.squares[numb] = "X";
             this.turns.push(null);
-           this.availableSpaces = this.availableSpaces.filter(inte => inte != numb)
-           console.log(this.availableSpaces)
+           this.availableSpaces = this.availableSpaces.filter(inte => inte != numb);
+           console.log(this.availableSpaces);
+           
+           if (this.gameState.hveAI ==1 && this.turns.length<9)
+           {this.easyAI();}
+           else if (this.gameState.hvIAI == 1 && this.turns.length<9)
+           {this.impossibleAI();}
          }
+        
         else if (this.gameState.hvh == 1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
         { document.getElementById(numb).innerHTML = "O";
         this.squares[numb] = "O";
         this.turns.push(null);
         this.availableSpaces = this.availableSpaces.filter(inte => inte != numb) }
-        else if (this.gameState.hveAI == 1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
-        {
-            easyAI(numb,inte);
-        }
-       
+        
+
+        this.render();
         this.checkConditionsX();
         this.checkConditionsO();
         this.checkTie();
-        this.render();
+        
         }
     },
 
-   
-      //almost done with this
-        easyAI: function(number, integer)
-        { availableSpaces.prototype.sample = function(){
-            return this[Math.floor(Math.random()*availableSpaces.length)];
-          }
-
-
+     
+        easyAI: function()
+        {   
+            let AImove = this.availableSpaces[Math.floor(Math.random() * this.availableSpaces.length)];
+            //document.getElementById(AImove).innerHTML = "O";
+            this.squares[AImove] = "O";
+            this.turns.push(null);
+            const index = this.availableSpaces.indexOf(AImove);
+                if (index > -1) {
+                this.availableSpaces.splice(index, 1);
+                }
+            console.log(this.turns.length)
         },
 
+       
 
     displayPlayer: function(){
         if (this.turns.length == 0 || this.turns.length ==2 || this.turns.length ==4 || this.turns.length ==6|| this.turns.length == 8)
-        {   document.getElementById("displayTurn").innerHTML = "Current Player: X";}
+        {   document.getElementById("displayTurn").innerHTML = `Current Player ${this.Player1.symbol}: ${this.Player1.name}` ;}
         else if (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7)
-        { document.getElementById("displayTurn").innerHTML = "Current Player: O";}
+        { document.getElementById("displayTurn").innerHTML = `Current Player ${this.Player2.symbol}: ${this.Player2.name}` ;}
     },
 
+    //check if X has won
     checkConditionsX: function()
     {   let X = "X"
         if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
         { modal.style.display = "block"; this.turns.push(null,null,null,null,null);}
     },
+    //check if O has won
     checkConditionsO: function()
     {
         let X = "O"
@@ -113,30 +130,63 @@
     if(this.turns.length == 9)
     { modal3.style.display = "block";}
     else return;
-},
+    },
     
     resetGame: function()
     {
         this.turns.splice(0, this.turns.length);
+        this.availableSpaces.splice(0,this.availableSpaces.length)
         for (let i =1; i <=9; i++)
-        {document.getElementById(i).innerHTML = "";
-            this.squares[i]="";
+        {
+        document.getElementById(i).innerHTML = "";
+        this.squares[i]="";
+        this.availableSpaces.push(i);
         }
     this.displayPlayer();
 
     },
 
+    //I'm not sure how to do this yet with how I structured the game. I might return to this later
+    impossibleAI: function()
+    {    
+        
+        //first turn
+        if(this.turns.length == 1){
+            //case 1
+            if (this.squares[1] == "X"||this.squares[3] == "X"||this.squares[7] == "X"||this.squares[9] == "X")
+                this.chooseAI(5);
+            if (this.squares[2] == "X"||this.squares[4] == "X"||this.squares[5]=="X")
+                this.chooseAI(1);
+            if (this.squares[6] == "X"||this.squares[8] == "X")
+            this.chooseAI(9);
 
-    };
+         }
+       
+        
 
+
+    },
+        
+    
+
+   chooseAI: function(number)
+   {   
+       this.squares[number] = "O";
+       this.turns.push(null);
+       const index = this.availableSpaces.indexOf(number);
+           if (number > -1) {
+           this.availableSpaces.splice(number, 1);
+               }
+   },
+    }
     game.init();
-
+    
 })();
 
+
+
+
 //Popup functions
-
-
-
 
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
