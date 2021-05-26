@@ -13,6 +13,11 @@ Tomorrow, I want to add the AI's to play against. I also need to add a draw cond
 5/19 added an AI that randomly chooses. I also added a bit to the initial form. I want to be able to select 1 player (vs ai) or 2 player (human vs human) I also want to be able to add names to the players, will be working on that next. 
 I spent some time trying to learn minimax, to make an AI that is impossible to beat. I can't figure out how to add it to how I designed my game. Maybe I'll dive deeper or maybe i'll save that idea for another day. 
 
+5/25
+It's been a few days without coding. I got the covid vaccine second dose, and it got me good for a couple of days. Then I had a busy weekend. I'm glad I was able to work on this for a bit, we're inches away from it being done. This session I added an initial form that you can input the players names and select whether its a human v human or human v ai game. Then, I made it so that those options alter the players and gameState objects, so the choices are "sticky". The game type is determined by the choice of hvh or hvai.  
+To finish it, I want to add a restart button. This will bring back up the form to select the names and game type. I want to make it so the forms clear out and don't save info. I want to add a cool transition for adding the letters, so it's not instantaneous, especially for the AI player. Currently, the AI's move is instant, and it looks clunky. Finally, I want to add a cool style to make the game have a neon style... Hopefully this is all done by either tomorrow or thursday, Im ready to move on
+
+
 Attack plan:
 
 1 - Design (done)

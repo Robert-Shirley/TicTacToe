@@ -59,13 +59,27 @@
       </div>
     
     </div>
+    
     <div id="InitialForm" class="modal">
 
       <!-- Initial Popup content -->
       <div class="front-content">
-        <span class="front">&times;</span>
-        <p>Start Game
-        <br> Player 1 name: </p>
+        
+        <form id="myForm">
+        <p class="Title">
+       (X) Player 1's name: <input type="text" class="formClass" id="form1"></p>
+
+        <p class="Title">
+         (O) Player 2's name: <input type="text" class="formClass" id="form2"></p>
+          
+          <label for="1v1" class="Title">Human vs Human:</label>
+          <input type="radio" id="1v1" name="choice" value="1" style="margin-left: 12px; border: 0px; height: 1.5em; width: 1.5em;"><br>
+          
+          <label for="ai" class="Title" >Human vs Easy AI:</label>
+          <input type="radio" id="ai" name="choice" value="2" style="margin-top: 30px; margin-bottom: 30px; border: 0px; height: 1.5em; width: 1.5em;"><br>
+
+        <span class="front">Start Game</span>
+        </form>
       </div>
     
     </div>

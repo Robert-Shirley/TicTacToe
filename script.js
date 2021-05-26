@@ -10,7 +10,7 @@
 
     //1 = yes, 0 = no. hvh =human vs human, hveAI = human vs easy AI, hvIAI = human vs Impossible AI. Default is hvh. Player 1 is always human
     Player1: {
-        name: "Bob",
+        name: "",
         human: 1,
         symbol: "X",  
     },
@@ -22,7 +22,7 @@
     gameState:{
         hvh: 0,
         hveAI: 0,
-        hvIAI: 1,
+        hvIAI: 0,
     },
 
     //turn counter
@@ -42,47 +42,79 @@
         this.$button = this.$div.find('button');
         this.$curPlayer = this.$el.find('#displayTurn');
         this.$reset = this.$el.find('#resetButton');
+        this.$P1Name = this.$el.find('#form1');
+        this.$P2Name = this.$el.find('#form2');
+        this.$choice = this.$el.find('input[name=choice]');
+        
+        
+        this.$Start = this.$el.find('.front');
+        
     },
     bindEvents: function(){
         this.$button.on('click',this.addSquare.bind(this));
         this.$reset.on('click',this.resetGame.bind(this));
+        this.$Start.on('click',this.startGame.bind(this));
     },
+
+    startGame: function(){
+        this.Player1.name = this.$P1Name.val();
+        this.Player2.name = this.$P2Name.val();
+        let checkedValue = this.$choice.filter(":checked").val();
+        
+       if(checkedValue==="1"){
+        this.gameState.hvh = 1;
+        this.gameState.hveAI = 0;
+        }
+        else
+        {this.gameState.hvh = 0;
+        this.gameState.hveAI =1;
+        }
+        
+        this.displayPlayer();
+
+    },
+
     render: function(){
         this.displayPlayer();
         if(this.turns.length >=1){
         for (let i = 1; i <=9; i++)
-        {
-            document.getElementById(i).innerHTML = this.squares[i];
+             {   
+               document.getElementById(i).innerHTML = this.squares[i];
+             }
+         
         }
-    }
     },
+
+
+
     addSquare: function(event){
         let $add = $(event.target).closest('button');
         let numb = $add.attr('id');
         let inte = parseInt(numb)-1;
         if( this.squares[numb]=="" ){
         if (this.turns.length == 0 || this.turns.length ==2 || this.turns.length ==4 || this.turns.length ==6|| this.turns.length == 8)
-        {   document.getElementById(numb).innerHTML = "X";
+        { 
             this.squares[numb] = "X";
             this.turns.push(null);
            this.availableSpaces = this.availableSpaces.filter(inte => inte != numb);
            console.log(this.availableSpaces);
-           
-           if (this.gameState.hveAI ==1 && this.turns.length<9)
+        
+        this.checkConditionsX();
+        
+           if (this.gameState.hveAI ==1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
            {this.easyAI();}
            else if (this.gameState.hvIAI == 1 && this.turns.length<9)
            {this.impossibleAI();}
-         }
-        
+         
+        }  
         else if (this.gameState.hvh == 1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
-        { document.getElementById(numb).innerHTML = "O";
+        { 
         this.squares[numb] = "O";
         this.turns.push(null);
         this.availableSpaces = this.availableSpaces.filter(inte => inte != numb) }
         
-
         this.render();
-        this.checkConditionsX();
+        
         this.checkConditionsO();
         this.checkTie();
         
@@ -107,9 +139,9 @@
 
     displayPlayer: function(){
         if (this.turns.length == 0 || this.turns.length ==2 || this.turns.length ==4 || this.turns.length ==6|| this.turns.length == 8)
-        {   document.getElementById("displayTurn").innerHTML = `Current Player ${this.Player1.symbol}: ${this.Player1.name}` ;}
+        {   document.getElementById("displayTurn").innerHTML = `Current Player: ${this.Player1.name}` ;}
         else if (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7)
-        { document.getElementById("displayTurn").innerHTML = `Current Player ${this.Player2.symbol}: ${this.Player2.name}` ;}
+        { document.getElementById("displayTurn").innerHTML = `Current Player: ${this.Player2.name}` ;}
     },
 
     //check if X has won
@@ -217,7 +249,7 @@ var InitialForm = document.getElementById("InitialForm");
 var span4 = document.getElementsByClassName("front")[0];
 
 span4.onclick = function() {
-    InitialForm.style.display = "none";
+   InitialForm.style.display = "none";
   }
 window.onload = function()
 {
