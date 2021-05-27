@@ -45,7 +45,7 @@
         this.$P1Name = this.$el.find('#form1');
         this.$P2Name = this.$el.find('#form2');
         this.$choice = this.$el.find('input[name=choice]');
-        
+        this.$restart = this.$el.find('#restartButton');
         
         this.$Start = this.$el.find('.front');
         
@@ -53,10 +53,19 @@
     bindEvents: function(){
         this.$button.on('click',this.addSquare.bind(this));
         this.$reset.on('click',this.resetGame.bind(this));
+        this.$restart.on('click',this.restartGame.bind(this));
         this.$Start.on('click',this.startGame.bind(this));
     },
 
+    checkInputs: function(){
+        if(this.$P1Name.val() != "" && this.$P2Name.val() != "" && (this.$choice.filter(":checked").val() === "1" || this.$choice.filter(":checked").val() === "2" )) 
+        {InitialForm.style.display = "none";
+        this.displayPlayer();}
+        else {alert("You need to fill out both names and select and option")}
+    },
+
     startGame: function(){
+        this.checkInputs();
         this.Player1.name = this.$P1Name.val();
         this.Player2.name = this.$P2Name.val();
         let checkedValue = this.$choice.filter(":checked").val();
@@ -69,8 +78,8 @@
         {this.gameState.hvh = 0;
         this.gameState.hveAI =1;
         }
+       
         
-        this.displayPlayer();
 
     },
 
@@ -78,11 +87,25 @@
         this.displayPlayer();
         if(this.turns.length >=1){
         for (let i = 1; i <=9; i++)
-             {   
+             { 
+                if(this.squares[i] != "" && this.gameState.hvh === 1){
+                 
                document.getElementById(i).innerHTML = this.squares[i];
+               setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},100)
+                }
+                if(this.squares[i] != "" && this.gameState.hvh === 0){
+                    if(this.turns.length % 2 != 0){
+                    document.getElementById(i).innerHTML = this.squares[i];
+                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},100)}
+                    if(this.turns.length % 2 == 0){
+                    document.getElementById(i).innerHTML = this.squares[i];
+                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},600)}  
+                }    
+                     }
+
              }
          
-        }
+        
     },
 
 
@@ -100,9 +123,9 @@
            console.log(this.availableSpaces);
         
         this.checkConditionsX();
-        
+        this.render();
            if (this.gameState.hveAI ==1 && (this.turns.length == 1 || this.turns.length == 3 || this.turns.length == 5 || this.turns.length ==7))
-           {this.easyAI();}
+           {this.easyAI()}
            else if (this.gameState.hvIAI == 1 && this.turns.length<9)
            {this.impossibleAI();}
          
@@ -113,8 +136,8 @@
         this.turns.push(null);
         this.availableSpaces = this.availableSpaces.filter(inte => inte != numb) }
         
-        this.render();
         
+        this.render();
         this.checkConditionsO();
         this.checkTie();
         
@@ -132,7 +155,8 @@
                 if (index > -1) {
                 this.availableSpaces.splice(index, 1);
                 }
-            console.log(this.turns.length)
+                this.render();
+            
         },
 
        
@@ -148,14 +172,32 @@
     checkConditionsX: function()
     {   let X = "X"
         if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
-        { modal.style.display = "block"; this.turns.push(null,null,null,null,null);}
+        { 
+            
+            
+        modal.style.display = "block"; 
+        if(this.gameState.hvh ===1){
+        document.getElementById("Player1").innerHTML = `Good Game! ${this.Player1.name} won the game!!`;}
+        else { document.getElementById("Player1").innerHTML = `Good Game! You won!!`;}
+        this.turns.push(null,null,null,null,null);
+    
+    }
     },
     //check if O has won
     checkConditionsO: function()
     {
         let X = "O"
         if((this.squares[1]== X && this.squares[2]== X && this.squares[3]== X)||(this.squares[4]== X && this.squares[5]== X && this.squares[6]== X )||(this.squares[7]== X && this.squares[8]== X && this.squares[9]== X )||(this.squares[1]== X && this.squares[4]== X && this.squares[7]== X )||(this.squares[2]== X && this.squares[5]== X && this.squares[8]== X )||(this.squares[3]== X && this.squares[6]== X && this.squares[9]== X )||(this.squares[3]== X && this.squares[5]== X && this.squares[7]== X )||(this.squares[1]== X && this.squares[5]== X && this.squares[9]== X ) )
-        { modal2.style.display = "block";this.turns.push(null,null,null,null)}
+        {if(this.gameState.hvh ===1)
+        { modal2.style.display = "block";
+        document.getElementById("Player2").innerHTML = `Good Game! ${this.Player2.name} won the game!!`;
+        this.turns.push(null,null,null,null)}
+        
+        else{
+            modal2.style.display = "block";
+        document.getElementById("Player2").innerHTML = `Close one, the computer player, ${this.Player2.name}, won the game!!`;
+        this.turns.push(null,null,null,null)}
+        }
     },
 
     checkTie: function(){
@@ -171,9 +213,32 @@
         for (let i =1; i <=9; i++)
         {
         document.getElementById(i).innerHTML = "";
+        document.getElementById(i).classList.remove('pre-animation')
         this.squares[i]="";
         this.availableSpaces.push(i);
         }
+    this.displayPlayer();
+
+    },
+
+    restartGame: function()
+    {   
+        document.getElementById('form1').value = '';
+        document.getElementById('form2').value = '';
+        document.getElementById('1v1').checked = false;
+        document.getElementById('ai').checked = false;
+        InitialForm.style.display = "block";
+        this.turns.splice(0, this.turns.length);
+        this.availableSpaces.splice(0,this.availableSpaces.length)
+        for (let i =1; i <=9; i++)
+        {
+        document.getElementById(i).innerHTML = "";
+        document.getElementById(i).classList.remove('pre-animation')
+        this.squares[i]="";
+        this.availableSpaces.push(i);
+        }
+
+
     this.displayPlayer();
 
     },
@@ -248,9 +313,7 @@ span3.onclick = function() {
 var InitialForm = document.getElementById("InitialForm");
 var span4 = document.getElementsByClassName("front")[0];
 
-span4.onclick = function() {
-   InitialForm.style.display = "none";
-  }
+
 window.onload = function()
 {
     InitialForm.style.display = "block";

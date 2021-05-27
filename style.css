@@ -40,6 +40,35 @@ margin-right: auto;}
   justify-content: center;
   }
 
+#restartButton
+{ display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 40px;
+  transition: all .3s ease-in-out; 
+  height: fit-content;
+  margin-left: 50px;
+
+}
+
+#restartButton:hover { 
+  transform: scale(1.1); 
+  
+  cursor: pointer;
+  background-color: #e79cee;
+  outline:lightcoral;
+}
+
+h2{
+  transition: opacity .5s ease;
+}
+
+.fade{
+  opacity: 0;
+}
+
 #resetButton
 { display: flex;
   align-content: center;
@@ -85,9 +114,12 @@ border-radius: 5px;
 background-color: #dfecec;
 font-size: 100px;
 transition: all .3s ease-in-out; 
+color: transparent;
 }
 
-
+.box.pre-animation {
+  color: black;
+}
 
 .box:hover { 
   transform: scale(1.1); 

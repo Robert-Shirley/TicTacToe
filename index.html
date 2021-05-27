@@ -14,7 +14,7 @@
     <div id = "leftMargin"></div>
     <div id = "rightMargin"></div>
     <h1 id = "displayTurn" class ="displayTurn"></h1>
-    <section class = "buttonArea"><button id="resetButton">Reset</button></section>
+    <section class = "buttonArea"><button id="resetButton">Reset</button><button id="restartButton">Restart</button></section>
     <div id = "game" class = "gameboard">
      
       
@@ -37,7 +37,7 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Player X has won the Game!!</p>
+        <p id="Player1"></p>
       </div>
     
     </div>
@@ -46,7 +46,7 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Player O has won the Game!!</p>
+        <p id="Player2"></p>
       </div>
     
     </div>
@@ -65,18 +65,18 @@
       <!-- Initial Popup content -->
       <div class="front-content">
         
-        <form id="myForm">
+        <form id="myForm" autocomplete="off">
         <p class="Title">
-       (X) Player 1's name: <input type="text" class="formClass" id="form1"></p>
+       (X) Player 1's name: <input type="text" class="formClass" id="form1" required></p>
 
         <p class="Title">
-         (O) Player 2's name: <input type="text" class="formClass" id="form2"></p>
+         (O) Player 2's name: <input type="text" class="formClass" id="form2" required></p>
           
           <label for="1v1" class="Title">Human vs Human:</label>
-          <input type="radio" id="1v1" name="choice" value="1" style="margin-left: 12px; border: 0px; height: 1.5em; width: 1.5em;"><br>
+          <input type="radio" id="1v1" name="choice" value="1" style="margin-left: 12px; border: 0px; height: 1.5em; width: 1.5em;" required><br>
           
           <label for="ai" class="Title" >Human vs Easy AI:</label>
-          <input type="radio" id="ai" name="choice" value="2" style="margin-top: 30px; margin-bottom: 30px; border: 0px; height: 1.5em; width: 1.5em;"><br>
+          <input type="radio" id="ai" name="choice" value="2" style="margin-top: 30px; margin-bottom: 30px; border: 0px; height: 1.5em; width: 1.5em;" required><br>
 
         <span class="front">Start Game</span>
         </form>
