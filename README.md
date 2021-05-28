@@ -21,6 +21,8 @@ To finish it, I want to add a restart button. This will bring back up the form t
 Added form validation to the beginning form. I added a restart button. And I added a transition when you click a square and made the computer have a transition as well. Also, depending on if its a hvh or hvAI game, the winning messages will be different.
 All that really remains is to add a cool neon theme and we should be done. There are a few other things we could do, like add a tally that keeps track of wins, but I think we'll skip that for now
 
+5/27
+Added a neon effect to everything. Looks pretty freakin cool to me! Happy with how this one turned out
 
 Attack plan:
 
