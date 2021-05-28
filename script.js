@@ -61,7 +61,7 @@
         if(this.$P1Name.val() != "" && this.$P2Name.val() != "" && (this.$choice.filter(":checked").val() === "1" || this.$choice.filter(":checked").val() === "2" )) 
         {InitialForm.style.display = "none";
         this.displayPlayer();}
-        else {alert("You need to fill out both names and select and option")}
+        else {alert("You need to fill out both names and select a game option")}
     },
 
     startGame: function(){
