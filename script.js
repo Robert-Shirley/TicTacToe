@@ -93,7 +93,7 @@
                document.getElementById(i).innerHTML = this.squares[i];
                setTimeout(function(){document.getElementById(i).classList.add('pre-animation1')},50)
                  }
-                 if(this.squares[i]==="O"){
+                 else if(this.squares[i]==="O"){
                     document.getElementById(i).innerHTML = this.squares[i];
                     setTimeout(function(){document.getElementById(i).classList.add('pre-animation2')},50)
                  }
@@ -139,10 +139,11 @@
         { 
         this.squares[numb] = "O";
         this.turns.push(null);
-        this.availableSpaces = this.availableSpaces.filter(inte => inte != numb) }
+        this.availableSpaces = this.availableSpaces.filter(inte => inte != numb);
+        this.render(); }
         
         
-        this.render();
+       
         this.checkConditionsO();
         this.checkTie();
         
@@ -239,7 +240,8 @@
         for (let i =1; i <=9; i++)
         {
         document.getElementById(i).innerHTML = "";
-        document.getElementById(i).classList.remove('pre-animation')
+        document.getElementById(i).classList.remove('pre-animation1')
+        document.getElementById(i).classList.remove('pre-animation2')
         this.squares[i]="";
         this.availableSpaces.push(i);
         }
