@@ -89,17 +89,22 @@
         for (let i = 1; i <=9; i++)
              { 
                 if(this.squares[i] != "" && this.gameState.hvh === 1){
-                 
+                 if(this.squares[i]==="X"){
                document.getElementById(i).innerHTML = this.squares[i];
-               setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},100)
+               setTimeout(function(){document.getElementById(i).classList.add('pre-animation1')},50)
+                 }
+                 if(this.squares[i]==="O"){
+                    document.getElementById(i).innerHTML = this.squares[i];
+                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation2')},50)
+                 }
                 }
                 if(this.squares[i] != "" && this.gameState.hvh === 0){
-                    if(this.turns.length % 2 != 0){
+                    if(this.squares[i]==="X"){
                     document.getElementById(i).innerHTML = this.squares[i];
-                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},100)}
-                    if(this.turns.length % 2 == 0){
+                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation1')},50)}
+                    if(this.squares[i]==="O"){
                     document.getElementById(i).innerHTML = this.squares[i];
-                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation')},600)}  
+                    setTimeout(function(){document.getElementById(i).classList.add('pre-animation2')},400)}  
                 }    
                      }
 
@@ -213,7 +218,8 @@
         for (let i =1; i <=9; i++)
         {
         document.getElementById(i).innerHTML = "";
-        document.getElementById(i).classList.remove('pre-animation')
+        document.getElementById(i).classList.remove('pre-animation1')
+        document.getElementById(i).classList.remove('pre-animation2')
         this.squares[i]="";
         this.availableSpaces.push(i);
         }

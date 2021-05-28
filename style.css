@@ -10,6 +10,9 @@ body
     "leftMargin gameboard rightMargin"
     "footer footer footer"
     ;
+    background-color: #010a01;
+  background-image: url("https://cdn.pixabay.com/photo/2017/02/12/12/42/wall-2059909_640.png");
+  font-family: "Yellowtail", sans-serif;
 }
 
 header
@@ -18,7 +21,17 @@ header
   display: flex;
   align-items: center;
   justify-content: center;
-background-color: #9cedee;}
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #5271ff,
+      0 0 82px #5271ff,
+      0 0 92px #5271ff,
+      0 0 102px #5271ff,
+      0 0 151px #5271ff;
+}
 
 footer
 {grid-area: footer;}
@@ -38,6 +51,7 @@ margin-right: auto;}
   display: flex;
   align-content: center;
   justify-content: center;
+  
   }
 
 #restartButton
@@ -50,6 +64,19 @@ margin-right: auto;}
   transition: all .3s ease-in-out; 
   height: fit-content;
   margin-left: 50px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #5271ff,
+      0 0 82px #5271ff,
+      0 0 92px #5271ff,
+      0 0 102px #5271ff,
+      0 0 151px #5271ff;
+      font-family: "Yellowtail", sans-serif;
 
 }
 
@@ -57,8 +84,18 @@ margin-right: auto;}
   transform: scale(1.1); 
   
   cursor: pointer;
-  background-color: #e79cee;
-  outline:lightcoral;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #5271ff,
+      0 0 82px #5271ff,
+      0 0 92px #5271ff,
+      0 0 102px #5271ff,
+      0 0 151px #5271ff;
 }
 
 h2{
@@ -74,11 +111,23 @@ h2{
   align-content: center;
   justify-content: center;
   border-radius: 5px;
-  background-color: #ffffff;
+  
   font-size: 40px;
   transition: all .3s ease-in-out; 
   height: fit-content;
-
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #5271ff,
+      0 0 82px #5271ff,
+      0 0 92px #5271ff,
+      0 0 102px #5271ff,
+      0 0 151px #5271ff;
+ font-family: "Yellowtail", sans-serif;
 
 }
 
@@ -86,8 +135,18 @@ h2{
   transform: scale(1.1); 
   
   cursor: pointer;
-  background-color: #e79cee;
-  outline:lightcoral;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #5271ff,
+      0 0 82px #5271ff,
+      0 0 92px #5271ff,
+      0 0 102px #5271ff,
+      0 0 151px #5271ff;
 }
 
 .displayTurn
@@ -95,7 +154,18 @@ h2{
 font-size: 50px;
 display: flex;
 align-items: center;
-justify-content: center;}
+justify-content: center;
+color: #fff;
+text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #5271ff,
+    0 0 82px #5271ff,
+    0 0 92px #5271ff,
+    0 0 102px #5271ff,
+    0 0 151px #5271ff;
+}
 
 #game
 {grid-area: gameboard;}
@@ -111,21 +181,52 @@ grid-template-rows: 200px 200px 200px;
 .box
 {margin: 10px;
 border-radius: 5px;
-background-color: #dfecec;
-font-size: 100px;
+background-color: transparent;
+font-size: 120px;
 transition: all .3s ease-in-out; 
 color: transparent;
+border: 0.2rem solid #fff;
+border-radius: 2rem;
+
+box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #bc13fe,
+            0 0 0.8rem #bc13fe,
+            0 0 2.8rem #bc13fe,
+            inset 0 0 1.3rem #bc13fe;
 }
 
-.box.pre-animation {
-  color: black;
+.box.pre-animation1 {
+  color: #fff;
+text-shadow:
+0 0 4px #fff,
+0 0 11px #fff,
+0 0 19px #fff,
+0 0 40px #0fa,
+0 0 80px #0fa,
+0 0 90px #0fa,
+0 0 100px #0fa,
+0 0 150px #0fa;
+}
+.box.pre-animation2 {
+  color: #fff;
+
+  text-shadow:
+  0 0 4px #fff,
+  0 0 11px #fff,
+  0 0 19px #fff,
+  0 0 40px #f09,
+  0 0 80px #f09,
+  0 0 90px #f09,
+  0 0 100px #f09,
+  0 0 150px #f09;
 }
 
 .box:hover { 
   transform: scale(1.1); 
   
   cursor: pointer;
-  background-color: #9cedee;
+  background-color: transparent;
   outline:lightcoral;
 }
 .modal {
@@ -144,15 +245,24 @@ color: transparent;
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: transparent;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 50px;
-  border: 1px solid #888;
+  text-align: center;
   width: 80%; /* Could be more or less, depending on screen size */
   font-size: 100px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 1.0s;
+  border: thin;
   border-radius: 20px;
+  color: #fff;
+text-shadow:
+   
+    0 0 21px #fff,
+    0 0 42px #5271ff,
+    0 0 82px #5271ff;
+   
+
 }
 
 /* Add Animation */
@@ -177,41 +287,59 @@ color: transparent;
 }
 
 .front-content {
-  background-color: #fefefe;
+  background-color: transparent;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 50px;
-  border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
-  font-size: 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  border: none;
+  width: 26.5%; /* Could be more or less, depending on screen size */
+  font-size: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 1.0s;
-  border-radius: 20px;
+  border-radius: 0px;
   display: flex;
   columns:auto;
   align-content:space-around;
   justify-content:space-evenly;
+  color: rgb(255, 255, 255);
+text-shadow:
+    0 0 7px #5271ff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #5271ff;
+  
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    padding: 0.4em;
+    box-shadow: 0 0 .2rem #fff,
+                0 0 .2rem #fff,
+                0 0 2rem #bc13fe,
+                0 0 0.8rem #bc13fe,
+                0 0 2.8rem #bc13fe,
+                inset 0 0 1.3rem #bc13fe;
+
 }
 
 .front {
-  color: rgb(100, 100, 100);
+  color: rgb(255, 248, 248);
   float:inline-end;
   margin-left: 120px;
   margin-top: 100px;
-  font-size: 30px;
+  font-size: 60px;
   font-weight: bold;
 
 }
 
 .front:hover,
 .front:focus {
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   cursor: pointer;
 }
 
 .Title
 {
-font-size: 30px;
+
 margin-bottom: 30px;
 
 }
