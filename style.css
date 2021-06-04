@@ -180,6 +180,7 @@ grid-template-rows: 200px 200px 200px;
 
 .box
 {margin: 10px;
+  padding-right: 30px;
 border-radius: 5px;
 background-color: transparent;
 font-size: 120px;
@@ -194,6 +195,7 @@ box-shadow: 0 0 .2rem #fff,
             0 0 0.8rem #bc13fe,
             0 0 2.8rem #bc13fe,
             inset 0 0 1.3rem #bc13fe;
+            font-family: "Yellowtail", sans-serif;
 }
 
 .box.pre-animation1 {
